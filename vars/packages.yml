@@ -1,0 +1,7 @@
+---
+plist:
+  - package: mlocate
+  - package: wget
+  - package: zip
+  - package: unzip
+  - package: tar

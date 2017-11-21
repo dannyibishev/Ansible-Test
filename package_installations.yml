@@ -1,0 +1,20 @@
+---
+- hosts: testing_server
+  become: yes
+  tasks:
+   - include_vars: packages.yml
+ 
+   - name: Upgrade any packages that are out of date if necessary
+     yum: 
+        name: "*"
+        state: latest
+    
+   - name: Install user friendly packages
+     yum:
+        name: "{{ item.package }}"
+        state: latest
+     with_items: "{{ plist }}"  
+
+
+
+-
