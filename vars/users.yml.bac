@@ -1,0 +1,31 @@
+---
+
+users:
+  - username: Danny
+    password: HelloLetmein
+    use_sudo: yes
+    comment: "Danny Admin"
+
+  - username: Intern
+    password: Internsworld
+    use_sudo: no
+    comment: "Intern Access Only"
+
+  - username: guest
+    password: letmeinplease2017
+    use_sudo: no 
+    comment: "Guest Minimal Access Only"
+
+vault_users:
+  - username: Vault
+    password: Password
+    use_sudo: yes
+    comment: "Vault User" 
+
+users_expiration: 1498654800
+vault_user_expiration: 1545609600
+
+
+
+
+

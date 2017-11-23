@@ -1,5 +1,5 @@
 ---
-- hosts: testing_server
+- hosts: "*"
   become: yes
   tasks:
    - include_vars: packages.yml
@@ -14,4 +14,8 @@
         name: "{{ item.package }}"
         state: latest
      with_items: "{{ plist }}"  
-
+   
+   - name: Install Passlib (Used for password cryptography)
+     pip:
+        name: passlib
+        state: latest

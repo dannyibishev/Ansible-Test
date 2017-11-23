@@ -1,16 +1,21 @@
 ---
+user_expiration: 1530187200
+user_expiration_vault: 1545609600
 users:
-  - username: Danny
-    password: HelloLetmein
-    use_sudo: yes
-    comment: "Danny Admin"
-
-  - username: Intern
-    password: Internsworld
-    use_sudo: no
-    comment: "Intern Access Only"
-
-  - username: guest
-    password: letmeinplease2017
-    use_sudo: no 
-    comment: "Guest Minimal Access Only"
+- comment: Danny Admin
+  password: $6$zgdkfH.M4wkmMQVS$31awGnOTLZR8Wlthi5GVRuiiV9GM8cc0J.VSPDPaimbEUxiMyLu2Zjaf7aXzcQiMOTXXLEArVr3SQir2eIKTi.
+  use_sudo: true
+  username: Danny
+- comment: Intern Access Only
+  password: $6$pxmzWbZapzo1EXw4$pwdr6lvYSasfQ9MfpGgZppZ9kRM0ce7lN0ppuWbN6/OC2CigZoX.mkD/aO/Id7hkvTmKntRM94hYHoueNp0lg1
+  use_sudo: false
+  username: Intern
+- comment: Guest Minimal Access Only
+  password: $6$pxmzWbZapzo1EXw4$pwdr6lvYSasfQ9MfpGgZppZ9kRM0ce7lN0ppuWbN6/OC2CigZoX.mkD/aO/Id7hkvTmKntRM94hYHoueNp0lg1
+  use_sudo: false
+  username: guest
+users_vault:
+- comment: Vault User
+  password: $6$pxmzWbZapzo1EXw4$pwdr6lvYSasfQ9MfpGgZppZ9kRM0ce7lN0ppuWbN6/OC2CigZoX.mkD/aO/Id7hkvTmKntRM94hYHoueNp0lg1
+  use_sudo: true
+  username: Vault

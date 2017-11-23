@@ -4,8 +4,8 @@
   tasks:
      - include_vars: users.yml
 
-     - name: Create Groups 
-       group: 
+     - name: Create Groups
+       group:
           name: admin
           state: present
 
@@ -13,9 +13,10 @@
        user:
           name: "{{ item.username }}"
           comment: "{{ item.comment }}"
-          password: "{{ item.password }}" 
+          password: "{{ item.password }}"
+          update_password: always
           shell: /bin/bash
-          expires: 1498654800
+          expires: "{{ user_expiration | default(1514073600) }}"
        with_items: "{{ users }}"
 
      - name: Add specified users to sudoers file
@@ -27,3 +28,26 @@
        when: "{{ item.use_sudo }} == True"
        with_items: "{{ users }}"
 
+- hosts: vault_servers
+  become: yes
+  tasks:
+     - include_vars: users.yml
+
+     - name: Create users
+       user:
+          name: "{{ item.username }}"
+          comment: "{{ item.comment }}"
+          password: "{{ item.password }}"
+          update_password: always
+          shell: /bin/bash
+          expires: "{{ user_expiration_vault | default(1514073600) }}"
+       with_items: "{{ users_vault }}"
+
+     - name: Add specified users to sudoers file
+       lineinfile:
+          path: /etc/sudoers
+          state: present
+          line: "{{ item.username }} ALL=(ALL) NOPASSWD: ALL"
+          regexp: "^{{ item.username }}.*"
+       when: "{{ item.use_sudo }} == True"
+       with_items: "{{ users_vault }}"

@@ -5,3 +5,5 @@ plist:
   - package: zip
   - package: unzip
   - package: tar
+  - package: epel-release 
+  - package: python-pip
