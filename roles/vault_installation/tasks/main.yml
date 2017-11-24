@@ -1,0 +1,21 @@
+---
+
+  - name: Get Vault using wget
+    shell: wget https://releases.hashicorp.com/vault/0.9.0/vault_0.9.0_linux_386.zip
+    args:
+       chdir: /opt
+       creates: vault_*
+
+  - name: Unzip the vault file.
+    shell: unzip vault_*
+    args:
+       chdir: /opt
+       creates: vault*
+    shell: rm vault_*
+
+  - name: Change Owner of file to the Vault User
+    file:
+      path: /opt/vault
+      owner: Vault
+      group: Vault
+      mode: 0754
